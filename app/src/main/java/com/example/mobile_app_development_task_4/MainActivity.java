@@ -10,51 +10,25 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 
+import android.os.Bundle;
+import android.view.Gravity;
+import android.widget.FrameLayout;
+import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        TableLayout tableLayout = new TableLayout( this);
-
-        // первая строка
-        TableRow tableRow1 = new TableRow(this);
-        TextView textView1 = new TextView(this);
-        textView1.setText("Логин");
-        tableRow1.addView(textView1, new TableRow.LayoutParams(
-                TableRow.LayoutParams.WRAP_CONTENT,
-                TableRow.LayoutParams.WRAP_CONTENT, 0.5f));
-        EditText editText1 = new EditText(this);
-        tableRow1.addView(editText1, new TableRow.LayoutParams(
-                TableRow.LayoutParams.WRAP_CONTENT,
-                TableRow.LayoutParams.WRAP_CONTENT, 1.0f));
-        // вторая строка
-        TableRow tableRow2 = new TableRow(this);
-        TextView textView2 = new TextView(this);
-        textView2.setText("Email");
-        tableRow2.addView(textView2, new TableRow.LayoutParams(
-                TableRow.LayoutParams.WRAP_CONTENT,
-                TableRow.LayoutParams.WRAP_CONTENT, 0.5f));
-        EditText editText2 = new EditText(this);
-        tableRow2.addView(editText2, new TableRow.LayoutParams(
-                TableRow.LayoutParams.WRAP_CONTENT,
-                TableRow.LayoutParams.WRAP_CONTENT, 1.f));
-
-
-        // третия строка
-        TableRow tableRow3 = new TableRow(this);
-        Button button = new Button(this);
-        button.setText("push");
-        tableRow3.addView(button, new TableRow.LayoutParams(
-                TableRow.LayoutParams.WRAP_CONTENT,
-                TableRow.LayoutParams.WRAP_CONTENT, 0.5f));
-
-        tableLayout.addView(tableRow1);
-        tableLayout.addView(tableRow2);
-        tableLayout.addView(button);
-        setContentView(tableLayout);
+        FrameLayout frameLayout = new FrameLayout(this);
+        TextView textView = new TextView(this);
+        textView.setText("Hello World!");
+        FrameLayout.LayoutParams layoutParams = new
+                FrameLayout.LayoutParams
+                (FrameLayout.LayoutParams.WRAP_CONTENT,
+                        FrameLayout.LayoutParams.WRAP_CONTENT);
+        layoutParams.gravity = Gravity.CENTER_HORIZONTAL | Gravity.TOP;
+        textView.setLayoutParams(layoutParams);
+        textView.setTextSize(26);
+        frameLayout.addView(textView);
+        setContentView(frameLayout);
     }
-
-
 }
