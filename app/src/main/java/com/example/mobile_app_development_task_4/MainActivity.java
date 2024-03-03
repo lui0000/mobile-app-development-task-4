@@ -2,23 +2,30 @@ package com.example.mobile_app_development_task_4;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.ViewGroup;
-import android.widget.ScrollView;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
-
+    int clicks = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_main);
-        ScrollView scrollView = new ScrollView(this);
-        TextView textView = new TextView(this);
-        textView.setText("Lorem Ipsum is simply dummy text of the printing and typesetting industry...like Aldus PageMaker including versions of Lorem Ipsum.");
-        textView.setLayoutParams(new ViewGroup.LayoutParams
-                (ViewGroup.LayoutParams.WRAP_CONTENT,
-                        ViewGroup.LayoutParams.WRAP_CONTENT));
-        textView.setTextSize(60);
-        scrollView.addView(textView);
-        setContentView(scrollView);
+        setContentView(R.layout.activity_main);
+        View plusButtonView = findViewById(R.id.plus_button);
+        View minusButtonView = findViewById(R.id.minus_button);
+        TextView clicksText = findViewById(R.id.clicksText);
+        Button plusButton = plusButtonView.findViewById(R.id.clickBtn);
+        Button minusButton = minusButtonView.findViewById(R.id.clickBtn);
+        plusButton.setText("+");
+        minusButton.setText("-");
+        plusButton.setOnClickListener(v -> {
+            clicks++;
+            clicksText.setText(clicks + " Clicks");
+        });
+        minusButton.setOnClickListener(v -> {
+            clicks--;
+            clicksText.setText(clicks + " Clicks");
+        });
     }
 }
+
